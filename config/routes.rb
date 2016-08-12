@@ -87,7 +87,8 @@ RgsocTeams::Application.routes.draw do
     resources :exports, only: [:index, :create]
   end
 
-  get 'student', to: 'student/dashboard#index'
+  get 'student', to: 'students/dashboard#index'
+  patch 'students/notes', to: 'students/notes#update'
   namespace :students do
     get 'dashboard', to: 'dashboard#index'
     resources :status_updates, :except => [:new]

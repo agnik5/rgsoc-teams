@@ -1,2 +1,22 @@
-h2 Students Dashboard
-p = link_to "Status Updates", [:students, :status_updates], class: params[:controller] == 'students/status_updates' ? 'active' : ''
+h2 Student Dashboard
+
+div.row
+  div.dashboard-box.col-xs-12
+    div.background-color
+      section.team-title
+        h3 Overview
+      section.dashboard
+        div.row
+          div.links.col-sm-6
+						p = link_to "Status Updates", [:students, :status_updates], class: params[:controller] == 'students/status_updates' ? 'active' : ''
+						p = link_to "Helpful Links", page_path('helpful-links')
+          div.col-sm-6
+            = simple_form_for Note.notepad(current_user), url: students_notes_path do |form|
+              == render 'students/notes/form', f: form
+div.row
+	div.dashboard-box.col-xs-12
+		div.background-color
+			section.team-title
+				h3 Announcements
+			section.dashboard
+				div.row
